@@ -141,15 +141,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# production
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+if os.getenv("MODE"):
+    # production
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+else:
+    # # developement
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+    )
 
 STATIC_URL = "/static/"
 
-# developement
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
