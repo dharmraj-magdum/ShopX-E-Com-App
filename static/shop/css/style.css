@@ -1,0 +1,66 @@
+.owl-carousel .item {
+	/* border: 1px solid black; */
+	font-size: 24px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.owl-next {
+	float: right;
+}
+.owl-prev {
+	float: left;
+}
+.owl-prev span {
+	font-size: 24px;
+	font-weight: bold;
+}
+.owl-next span {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.product-img {
+	height: 280px;
+	object-position: center;
+	/* object-fit: cover; */
+}
+
+.min-vh {
+	min-height: 72vh;
+}
+
+:root {
+	--clr-primary: #0c73eb;
+	--clr-primary2: #0b62da;
+	--clr-yellow: #f8e831;
+	--clr-red: #ff6164;
+	--clr-gray: #c8c8c8;
+	--clr-success: #27e1c1;
+	--clr-dark: #152336;
+}
+
+.bg-primary {
+	background-color: var(--clr-primary) !important;
+}
+
+.btn-primary {
+	background-color: var(--clr-primary);
+	border-color: var(--clr-primary);
+}
+.btn-outline-primary {
+	color: var(--clr-primary);
+	border-color: var(--clr-primary);
+}
+.btn-primary:hover {
+	background-color: var(--clr-primary2);
+	border-color: var(--clr-primary2);
+}
+.btn-outline-primary:hover {
+	background-color: var(--clr-primary);
+	border-color: var(--clr-primary);
+}
+.btn-outline-primary.active {
+	background-color: var(--clr-primary2);
+	border-color: var(--clr-primary2);
+}

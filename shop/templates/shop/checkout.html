@@ -1,0 +1,71 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm-6">
+      <h4>Payment to be done (Final Bill)</h4>
+      <hr>
+      <div class="px-4 py-1 alert-warning col-sm-7">
+        <p class="fw-bold ">
+          Subtotal : Rs. {{amount}} + 60.00 (shipping)
+          <br>
+          Total Cost : Rs. {{total}}
+        </p>
+      </div>
+      <br>
+      <h4>Order Summary</h4>
+      <hr>
+      {%for cart in carts%}
+      <div class="card mb-2">
+        <div class="card-body p-2 m-0">
+          <h5>Product: {{cart.product.title}}</h5>
+          <p>Quantity: {{cart.quantity}} price: Rs. {{cart.product.discounted_price}}</p>
+          <p class="fw-bold m-0">Cost: Rs. {{cart.get_subtotal}}</p>
+        </div>
+      </div>
+      {%endfor%}
+      <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure
+        optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium adipisci nisi nihil
+        in et quis?</small>
+    </div>
+    <div class="col-sm-4 offset-sm-1">
+      <h4>Select Shipping Address</h4>
+      <hr>
+      <form action="{% url 'payment-gateway' %}">
+        {% for customer in customerProflies%}
+        <div class="card mb-2">
+          <div class="card-body">
+            <h5>{{customer.name }}</h5>
+            {{customer.address }}
+            <br>
+            {{customer.city}} , {{customer.state}}
+            <div class="form-check mt-2">
+              <input class="form-check-input" name="customer_id" id="{{customer.id}}" type="radio" required
+                value="{{customer.id}}">
+              <label class="form-check-label fw-bold" for="{{customer.id}}">
+                Address: {{forloop.counter}} </label>
+            </div>
+          </div>
+        </div>
+        {% endfor%}
+        <div class="p-2">
+          <a class="btn btn-secondary" href="{% url 'profile'%}">Add new Address(profile)</a>
+        </div>
+        <hr>
+        {% if no_address %}
+        <div class="alert alert-info">
+          <p>You dont have added any address for delivery</p>
+          <p>Please add an Address to place order</p>
+        </div>
+        {% else %}
+        <div class="text-end">
+          <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+        </div>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}
