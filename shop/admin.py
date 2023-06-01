@@ -6,9 +6,9 @@ from .models.cart import Cart
 from .models.order import Order
 
 
-@admin.register(Product)
-class ProductAdminModel(admin.ModelAdmin):
-    list_display = ["id", "title", "category", "discounted_price"]
+@admin.register(Category)
+class CategoryAdminModel(admin.ModelAdmin):
+    list_display = ["id", "name"]
 
 
 @admin.register(Customer)
@@ -16,9 +16,11 @@ class CustomerAdminModel(admin.ModelAdmin):
     list_display = ["id", "user", "name", "address", "city",]
 
 
-@admin.register(Category)
-class CategoryAdminModel(admin.ModelAdmin):
-    list_display = ["id", "name"]
+# //----#dependent---------------------
+
+@admin.register(Product)
+class ProductAdminModel(admin.ModelAdmin):
+    list_display = ["id", "title", "category", "discounted_price"]
 
 
 @admin.register(Cart)
